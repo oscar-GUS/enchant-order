@@ -140,6 +140,17 @@ header .title-group span { font-size: 13px; color: var(--text-dim); }
 .item-btn.active { border-color: var(--accent); background: #1e1810; color: var(--text); }
 .item-btn .emoji { font-size: 18px; line-height: 1; }
 
+/* Iconos de ítem en imagen (pixel-art nítido) */
+.item-img {
+  image-rendering: pixelated;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+}
+.item-btn .item-img { width: 26px; height: 26px; }
+.hero-icon .item-img { width: 64px; height: 64px; }
+.node-icon .item-img { width: 30px; height: 30px; }
+
 .enchant-list {
   display: flex;
   flex-direction: column;

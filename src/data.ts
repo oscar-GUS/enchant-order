@@ -83,22 +83,30 @@ export interface ItemType {
   id: string;
   name: string; // Spanish (fixed)
   emoji: string;
+  icon?: string; // ruta a imagen (relativa a la página); si falta, se usa el emoji
   enchants: string[];
 }
 
 export const ITEM_TYPES: ItemType[] = [
-  { id: 'sword',       name: 'Espada',         emoji: '⚔️', enchants: ['sharpness', 'smite', 'bane_of_arthropods', 'knockback', 'fire_aspect', 'looting', 'sweeping_edge', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'pickaxe',     name: 'Pico',           emoji: '⛏️', enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'axe',         name: 'Hacha',          emoji: '🪓', enchants: ['efficiency', 'silk_touch', 'fortune', 'sharpness', 'smite', 'bane_of_arthropods', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'shovel',      name: 'Pala',           emoji: '🪏', enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'hoe',         name: 'Azada',          emoji: '🌾', enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'helmet',      name: 'Casco',          emoji: '🪖', enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'respiration', 'aqua_affinity', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
-  { id: 'chestplate',  name: 'Peto',           emoji: '🛡️', enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
-  { id: 'leggings',    name: 'Grebas',         emoji: '👖', enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'swift_sneak', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
-  { id: 'boots',       name: 'Botas',          emoji: '👟', enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'feather_falling', 'depth_strider', 'frost_walker', 'soul_speed', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
-  { id: 'bow',         name: 'Arco',           emoji: '🏹', enchants: ['power', 'punch', 'flame', 'infinity', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'crossbow',    name: 'Ballesta',       emoji: '🎯', enchants: ['multishot', 'piercing', 'quick_charge', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'trident',     name: 'Tridente',       emoji: '🔱', enchants: ['loyalty', 'riptide', 'channeling', 'impaling', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'sword',       name: 'Espada',         emoji: '⚔️', icon: 'icons/Diamond_Sword.png',      enchants: ['sharpness', 'smite', 'bane_of_arthropods', 'knockback', 'fire_aspect', 'looting', 'sweeping_edge', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'pickaxe',     name: 'Pico',           emoji: '⛏️', icon: 'icons/Diamond_Pickaxe.png',    enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'axe',         name: 'Hacha',          emoji: '🪓', icon: 'icons/Diamond_Axe.png',        enchants: ['efficiency', 'silk_touch', 'fortune', 'sharpness', 'smite', 'bane_of_arthropods', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'shovel',      name: 'Pala',           emoji: '🪏', icon: 'icons/Diamond_Shovel.png',     enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'hoe',         name: 'Azada',          emoji: '🌾', icon: 'icons/Diamond_Hoe.png',        enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'helmet',      name: 'Casco',          emoji: '🪖', icon: 'icons/Diamond_Helmet.png',     enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'respiration', 'aqua_affinity', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
+  { id: 'chestplate',  name: 'Peto',           emoji: '🛡️', icon: 'icons/Diamond_Chestplate.png', enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
+  { id: 'leggings',    name: 'Grebas',         emoji: '👖', icon: 'icons/Diamond_Leggings.png',   enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'swift_sneak', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
+  { id: 'boots',       name: 'Botas',          emoji: '👟', icon: 'icons/Diamond_Boots.png',      enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'feather_falling', 'depth_strider', 'frost_walker', 'soul_speed', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
+  { id: 'bow',         name: 'Arco',           emoji: '🏹', icon: 'icons/Bow.png',                enchants: ['power', 'punch', 'flame', 'infinity', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'crossbow',    name: 'Ballesta',       emoji: '🎯', icon: 'icons/Crossbow.png',           enchants: ['multishot', 'piercing', 'quick_charge', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'trident',     name: 'Tridente',       emoji: '🔱', icon: 'icons/Trident.png',            enchants: ['loyalty', 'riptide', 'channeling', 'impaling', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'fishing_rod', name: 'Caña de pescar', emoji: '🎣', enchants: ['luck_of_the_sea', 'lure', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'shears',      name: 'Tijeras',        emoji: '✂️', enchants: ['efficiency', 'unbreaking', 'mending', 'curse_of_vanishing'] },
 ];
+
+// Devuelve el HTML del icono del ítem: <img> si tiene imagen, si no el emoji.
+export function itemIconHtml(item: ItemType): string {
+  return item.icon
+    ? `<img class="item-img" src="${item.icon}" alt="${item.name}" draggable="false">`
+    : `<span class="emoji">${item.emoji}</span>`;
+}

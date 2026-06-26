@@ -1,5 +1,5 @@
 import './style.css';
-import { ITEM_TYPES, ENCHANT_MAP, enchName, type ItemType, type Lang } from './data';
+import { ITEM_TYPES, ENCHANT_MAP, enchName, itemIconHtml, type ItemType, type Lang } from './data';
 import { solve, type SolveResult } from './solver';
 
 // ── State ──────────────────────────────────────────────────────────────────
@@ -42,7 +42,7 @@ function renderItemGrid() {
   for (const item of ITEM_TYPES) {
     const btn = document.createElement('button');
     btn.className = 'item-btn' + (item.id === selectedItem.id ? ' active' : '');
-    btn.innerHTML = `<span class="emoji">${item.emoji}</span><span>${item.name}</span>`;
+    btn.innerHTML = `${itemIconHtml(item)}<span>${item.name}</span>`;
     btn.addEventListener('click', () => {
       selectedItem = item;
       selectedEnchants.clear();
@@ -139,7 +139,7 @@ function update() {
 function renderEmpty() {
   stage.innerHTML = `
     <div class="hero">
-      <div class="hero-icon">${selectedItem.emoji}</div>
+      <div class="hero-icon">${itemIconHtml(selectedItem)}</div>
       <div class="hero-info">
         <div class="item-name">${selectedItem.name}</div>
         <div class="no-ench">Marca encantamientos para ver el coste óptimo</div>
@@ -162,7 +162,7 @@ function tagsHtml(enchants: { id: string; level: number }[]): string {
 function nodeHtml(node: { enchants: { id: string; level: number }[]; isTargetItem: boolean }, extraClass = ''): string {
   const label = node.isTargetItem ? selectedItem.name : BOOK_LABEL();
   const icon = node.isTargetItem
-    ? `<div class="node-icon item">${selectedItem.emoji}</div>`
+    ? `<div class="node-icon item">${itemIconHtml(selectedItem)}</div>`
     : `<div class="node-icon book">${BOOK_SVG}</div>`;
   return `<div class="node-box ${node.isTargetItem ? 'target' : ''} ${extraClass}">
     ${icon}
@@ -183,7 +183,7 @@ function render(result: SolveResult) {
 
   stage.innerHTML = `
     <div class="hero">
-      <div class="hero-icon">${selectedItem.emoji}</div>
+      <div class="hero-icon">${itemIconHtml(selectedItem)}</div>
       <div class="hero-info">
         <div class="item-name">${selectedItem.name}</div>
         <div class="chips">${chips}</div>
