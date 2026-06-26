@@ -36,12 +36,16 @@ export const ENCHANTMENTS: Enchantment[] = [
   { id: 'swift_sneak',           name: 'Swift Sneak',           nameEs: 'Sigilo veloz',                      maxLevel: 3, rarity: 'very_rare', incompatible: [] },
   // Sword
   { id: 'sharpness',             name: 'Sharpness',             nameEs: 'Filo',                              maxLevel: 5, rarity: 'common',    incompatible: ['smite', 'bane_of_arthropods'] },
-  { id: 'smite',                 name: 'Smite',                 nameEs: 'Castigo',                           maxLevel: 5, rarity: 'uncommon',  incompatible: ['sharpness', 'bane_of_arthropods'] },
-  { id: 'bane_of_arthropods',    name: 'Bane of Arthropods',    nameEs: 'Perdición de los artrópodos',       maxLevel: 5, rarity: 'uncommon',  incompatible: ['sharpness', 'smite'] },
+  { id: 'smite',                 name: 'Smite',                 nameEs: 'Castigo',                           maxLevel: 5, rarity: 'uncommon',  incompatible: ['sharpness', 'bane_of_arthropods', 'density', 'breach'] },
+  { id: 'bane_of_arthropods',    name: 'Bane of Arthropods',    nameEs: 'Perdición de los artrópodos',       maxLevel: 5, rarity: 'uncommon',  incompatible: ['sharpness', 'smite', 'density', 'breach'] },
   { id: 'knockback',             name: 'Knockback',             nameEs: 'Empuje',                            maxLevel: 2, rarity: 'uncommon',  incompatible: [] },
   { id: 'fire_aspect',           name: 'Fire Aspect',           nameEs: 'Aspecto ígneo',                     maxLevel: 2, rarity: 'rare',      incompatible: [] },
   { id: 'looting',               name: 'Looting',               nameEs: 'Botín',                             maxLevel: 3, rarity: 'rare',      incompatible: [] },
   { id: 'sweeping_edge',         name: 'Sweeping Edge',         nameEs: 'Filo de barrido',                   maxLevel: 3, rarity: 'rare',      incompatible: [] },
+  // Mace
+  { id: 'density',               name: 'Density',               nameEs: 'Densidad',                          maxLevel: 5, rarity: 'uncommon',  incompatible: ['smite', 'bane_of_arthropods'] },
+  { id: 'breach',                name: 'Breach',                nameEs: 'Brecha',                            maxLevel: 4, rarity: 'rare',      incompatible: ['smite', 'bane_of_arthropods'] },
+  { id: 'wind_burst',            name: 'Wind Burst',            nameEs: 'Ráfaga de viento',                  maxLevel: 3, rarity: 'rare',      incompatible: [] },
   // Tools
   { id: 'efficiency',            name: 'Efficiency',            nameEs: 'Eficiencia',                        maxLevel: 5, rarity: 'common',    incompatible: [] },
   { id: 'silk_touch',            name: 'Silk Touch',            nameEs: 'Toque de seda',                     maxLevel: 1, rarity: 'very_rare', incompatible: ['fortune'] },
@@ -89,19 +93,22 @@ export interface ItemType {
 
 export const ITEM_TYPES: ItemType[] = [
   { id: 'sword',       name: 'Espada',         emoji: '⚔️', icon: 'icons/Diamond_Sword.png',      enchants: ['sharpness', 'smite', 'bane_of_arthropods', 'knockback', 'fire_aspect', 'looting', 'sweeping_edge', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'mace',        name: 'Maza',           emoji: '🔨', icon: 'icons/Mace.png',               enchants: ['density', 'breach', 'wind_burst', 'smite', 'bane_of_arthropods', 'fire_aspect', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'pickaxe',     name: 'Pico',           emoji: '⛏️', icon: 'icons/Diamond_Pickaxe.png',    enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'axe',         name: 'Hacha',          emoji: '🪓', icon: 'icons/Diamond_Axe.png',        enchants: ['efficiency', 'silk_touch', 'fortune', 'sharpness', 'smite', 'bane_of_arthropods', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'shovel',      name: 'Pala',           emoji: '🪏', icon: 'icons/Diamond_Shovel.png',     enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'hoe',         name: 'Azada',          emoji: '🌾', icon: 'icons/Diamond_Hoe.png',        enchants: ['efficiency', 'silk_touch', 'fortune', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'helmet',      name: 'Casco',          emoji: '🪖', icon: 'icons/Diamond_Helmet.png',     enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'respiration', 'aqua_affinity', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
+  { id: 'turtle_helmet', name: 'Caparazón de tortuga', emoji: '🐢', icon: 'icons/Turtle_Helmet.png', enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'respiration', 'aqua_affinity', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
   { id: 'chestplate',  name: 'Peto',           emoji: '🛡️', icon: 'icons/Diamond_Chestplate.png', enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
   { id: 'leggings',    name: 'Grebas',         emoji: '👖', icon: 'icons/Diamond_Leggings.png',   enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'swift_sneak', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
   { id: 'boots',       name: 'Botas',          emoji: '👟', icon: 'icons/Diamond_Boots.png',      enchants: ['protection', 'fire_protection', 'blast_protection', 'projectile_protection', 'thorns', 'feather_falling', 'depth_strider', 'frost_walker', 'soul_speed', 'unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
+  { id: 'elytra',      name: 'Élitros',        emoji: '🪽', icon: 'icons/Elytra.png',             enchants: ['unbreaking', 'mending', 'curse_of_binding', 'curse_of_vanishing'] },
   { id: 'bow',         name: 'Arco',           emoji: '🏹', icon: 'icons/Bow.png',                enchants: ['power', 'punch', 'flame', 'infinity', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'crossbow',    name: 'Ballesta',       emoji: '🎯', icon: 'icons/Crossbow.png',           enchants: ['multishot', 'piercing', 'quick_charge', 'unbreaking', 'mending', 'curse_of_vanishing'] },
   { id: 'trident',     name: 'Tridente',       emoji: '🔱', icon: 'icons/Trident.png',            enchants: ['loyalty', 'riptide', 'channeling', 'impaling', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'fishing_rod', name: 'Caña de pescar', emoji: '🎣', enchants: ['luck_of_the_sea', 'lure', 'unbreaking', 'mending', 'curse_of_vanishing'] },
-  { id: 'shears',      name: 'Tijeras',        emoji: '✂️', enchants: ['efficiency', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'fishing_rod', name: 'Caña de pescar', emoji: '🎣', icon: 'icons/Fishing_Rod.png',        enchants: ['luck_of_the_sea', 'lure', 'unbreaking', 'mending', 'curse_of_vanishing'] },
+  { id: 'shears',      name: 'Tijeras',        emoji: '✂️', icon: 'icons/Shears.png',             enchants: ['efficiency', 'unbreaking', 'mending', 'curse_of_vanishing'] },
 ];
 
 // Devuelve el HTML del icono del ítem: <img> si tiene imagen, si no el emoji.
