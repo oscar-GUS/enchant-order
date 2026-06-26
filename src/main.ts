@@ -7,25 +7,8 @@ let selectedItem: ItemType = ITEM_TYPES[0];
 let lang: Lang = 'en';
 const selectedEnchants = new Map<string, number>(); // id → level
 
-// ── Enchanted book icon ─────────────────────────────────────────────────────
-const BOOK_SVG = `
-<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bk" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#9b6bff"/>
-      <stop offset="1" stop-color="#6d28d9"/>
-    </linearGradient>
-  </defs>
-  <ellipse cx="20" cy="21" rx="15" ry="15" fill="#7c3aed" opacity="0.16"/>
-  <rect x="11" y="8" width="20" height="25" rx="2" fill="#efe6cf"/>
-  <line x1="27" y1="12" x2="27" y2="29" stroke="#cdbf9e" stroke-width="1"/>
-  <path d="M11 8h17a2 2 0 0 1 2 2v22a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V8Z" fill="url(#bk)"/>
-  <rect x="11" y="8" width="4.5" height="26" rx="1.5" fill="#5b21b6"/>
-  <rect x="19" y="16" width="7" height="10" rx="1.5" fill="none" stroke="#F2AF0D" stroke-width="1.3" opacity="0.9"/>
-  <path d="M24 8v9l-2-1.6L20 17V8Z" fill="#F4811F"/>
-  <path d="M32 11c.4 1.4.8 1.8 2.2 2.2-1.4.4-1.8.8-2.2 2.2-.4-1.4-.8-1.8-2.2-2.2 1.4-.4 1.8-.8 2.2-2.2Z" fill="#F2AF0D"/>
-  <path d="M9 24c.3 1 .6 1.3 1.6 1.6-1 .3-1.3.6-1.6 1.6-.3-1-.6-1.3-1.6-1.6 1-.3 1.3-.6 1.6-1.6Z" fill="#fff" opacity="0.85"/>
-</svg>`;
+// ── Enchanted book icon (gif del libro encantado) ───────────────────────────
+const BOOK_ICON = `<img class="book-img" src="icons/Enchanted_Book.gif" alt="Libro encantado" draggable="false">`;
 
 // ── DOM refs ───────────────────────────────────────────────────────────────
 const itemGrid = document.getElementById('item-grid')!;
@@ -34,7 +17,7 @@ const clearBtn = document.getElementById('clear-btn')!;
 const langToggle = document.getElementById('lang-toggle')!;
 const stage = document.getElementById('stage')!;
 
-const BOOK_LABEL = () => (lang === 'es' ? 'Libro' : 'Book');
+const BOOK_LABEL = () => (lang === 'es' ? 'Libro encantado' : 'Enchanted Book');
 
 // ── Item grid ──────────────────────────────────────────────────────────────
 function renderItemGrid() {
@@ -146,7 +129,6 @@ function renderEmpty() {
       </div>
     </div>
     <div class="empty-state">
-      <div class="icon">🔨</div>
       <p>Sin encantamientos seleccionados</p>
     </div>
   `;
@@ -163,7 +145,7 @@ function nodeHtml(node: { enchants: { id: string; level: number }[]; isTargetIte
   const label = node.isTargetItem ? selectedItem.name : BOOK_LABEL();
   const icon = node.isTargetItem
     ? `<div class="node-icon item">${itemIconHtml(selectedItem)}</div>`
-    : `<div class="node-icon book">${BOOK_SVG}</div>`;
+    : `<div class="node-icon book">${BOOK_ICON}</div>`;
   return `<div class="node-box ${node.isTargetItem ? 'target' : ''} ${extraClass}">
     ${icon}
     <div class="node-text">
